@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bundeswehr Dienstgrad Trainer – 46 Bilder mit Namen</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      font-family: sans-serif;
+      background: #f0f0f0;
+    }
+    img {
+      max-height: 300px;
+      margin-bottom: 20px;
+    }
+    #name {
+      font-size: 1.5rem;
+      font-weight: bold;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <img id="abzeichen" src="" alt="Dienstgrad Abzeichen" />
+  <div id="name"></div>
+
+  <script>
+    const dienstgrade = [
+      { bild: "dienstgrad1.png", name: "Matrose, Flieger, Schütze" },
+      { bild: "dienstgrad2.png", name: "Gefreiter" },
+      { bild: "dienstgrad3.png", name: "Obergefreiter" },
+      { bild: "dienstgrad4.png", name: "Hauptgefreiter" },
+      { bild: "dienstgrad5.png", name: "Stabsgefreiter" },
+      { bild: "dienstgrad6.png", name: "Oberstabsgefreiter" },
+      { bild: "dienstgrad7.png", name: "Unteroffizier" },
+      { bild: "dienstgrad8.png", name: "Stabsunteroffizier" },
+      { bild: "dienstgrad9.png", name: "Leutnant" },
+      { bild: "dienstgrad10.png", name: "Oberleutnant" },
+      { bild: "dienstgrad11.png", name: "Hauptmann" },
+      { bild: "dienstgrad12.png", name: "Stabshauptmann" },
+      { bild: "dienstgrad13.png", name: "Major" },
+      { bild: "dienstgrad14.png", name: "Oberstleutnant" },
+      { bild: "dienstgrad15.png", name: "Oberst" },
+      { bild: "dienstgrad16.png", name: "Brigadegeneral" },
+      { bild: "dienstgrad17.png", name: "Generalmajor" },
+      { bild: "dienstgrad18.png", name: "Generalleutnant" },
+      { bild: "dienstgrad19.png", name: "General" },
+      { bild: "dienstgrad20.png", name: "Fahnenjunker" },
+      { bild: "dienstgrad21.png", name: "Fähnrich" },
+      { bild: "dienstgrad22.png", name: "Oberfähnrich" },
+      { bild: "dienstgrad23.png", name: "Maat" },
+      { bild: "dienstgrad24.png", name: "Seekadett" },
+      { bild: "dienstgrad25.png", name: "Obermaat" },
+      { bild: "dienstgrad26.png", name: "Bootsmann" },
+      { bild: "dienstgrad27.png", name: "Oberbootsmann" },
+      { bild: "dienstgrad28.png", name: "Hauptbootsmann" },
+      { bild: "dienstgrad29.png", name: "Stabsbootsmann" },
+      { bild: "dienstgrad30.png", name: "Oberstabsbootsmann" },
+      { bild: "dienstgrad31.png", name: "Fähnrich zur See" },
+      { bild: "dienstgrad32.png", name: "Oberfähnrich zur See" },
+      { bild: "dienstgrad33.png", name: "Kapitänleutnant (KaLeu)" },
+      { bild: "dienstgrad34.png", name: "Stabskapitänleutnant" },
+      { bild: "dienstgrad35.png", name: "Korvettenkapitän" },
+      { bild: "dienstgrad36.png", name: "Fregattenkapitän" },
+      { bild: "dienstgrad37.png", name: "Kapitän zur See" },
+      { bild: "dienstgrad38.png", name: "Flottillenadmiral" },
+      { bild: "dienstgrad39.png", name: "Konteradmiral" },
+      { bild: "dienstgrad40.png", name: "Vizeadmiral" },
+      { bild: "dienstgrad41.png", name: "Admiral" },
+      { bild: "dienstgrad42.png", name: "Feldwebel" },
+      { bild: "dienstgrad43.png", name: "Oberfeldwebel" },
+      { bild: "dienstgrad44.png", name: "Hauptfeldwebel" },
+      { bild: "dienstgrad45.png", name: "Stabsfeldwebel" },
+      { bild: "dienstgrad46.png", name: "Oberstabsfeldwebel" },
+    ];
+
+    const img = document.getElementById("abzeichen");
+    const nameDiv = document.getElementById("name");
+
+    function zeigeDienstgrad() {
+      nameDiv.style.display = "none";
+
+      const index = Math.floor(Math.random() * dienstgrade.length);
+      const dienstgrad = dienstgrade[index];
+
+      img.src = dienstgrad.bild;
+
+      setTimeout(() => {
+        nameDiv.textContent = dienstgrad.name;
+        nameDiv.style.display = "block";
+      }, 3000);
+
+      setTimeout(() => {
+        zeigeDienstgrad();
+      }, 5000);
+    }
+
+    zeigeDienstgrad();
+  </script>
+</body>
+</html>
+
+<!-- 🔥 Speichere alle 46 Bilder im gleichen Ordner wie diese HTML-Datei und benenne sie entsprechend (dienstgrad1.png bis dienstgrad46.png). -->
