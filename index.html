@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bundeswehr Dienstgrad Trainer – 46 Bilder mit Namen</title>
+  <title>Bundeswehr Dienstgrad & Fragen Trainer</title>
   <style>
     body {
       display: flex;
@@ -18,16 +18,20 @@
       max-height: 300px;
       margin-bottom: 20px;
     }
-    #name {
+    #name, #frage, #antwort {
       font-size: 1.5rem;
       font-weight: bold;
       display: none;
+      text-align: center;
+      margin: 10px;
     }
   </style>
 </head>
 <body>
   <img id="abzeichen" src="" alt="Dienstgrad Abzeichen" />
   <div id="name"></div>
+  <div id="frage"></div>
+  <div id="antwort"></div>
 
   <script>
     const dienstgrade = [
@@ -81,30 +85,62 @@
       { bild: "dienstgrad48.png", name: "Oberleutnant zur See" },
     ];
 
+    const fragen = [
+      { frage: "Wer ist unser Schulschutzkommandeur?", antwort: "Kapitän zur See Seidl" },
+      { frage: "Wer ist der Lehrgruppenkommandeur?", antwort: "Fregattenkapitän Limburg" },
+      { frage: "Wer ist der Inspektionschef?", antwort: "Kapitänleutnant (KaLeu) Gernoth" },
+      { frage: "Wer ist der Zugoffizier?", antwort: "Oberleutnant zur See Brasen" },
+      { frage: "Wer ist der Inspektionsfeldwebel 'Spieß'?", antwort: "Stabsbootsmann Ruth" },
+      { frage: "Wer ist der Zugführer?", antwort: "Hauptbootsmann Haß" },
+      { frage: "Wer ist der Stellvertretende Zugführer?", antwort: "Hauptbootsmann Patz" },
+      { frage: "Wer ist der Gruppenführer der Gruppe 3?", antwort: "Hauptbootsmann Stenger" },
+      { frage: "Wer ist der Stellvertretende Gruppenführer der Gruppe 3?", antwort: "Oberstabsgefreiter Schlüterbusch" },
+      { frage: "Wer ist die Versorgerin?", antwort: "Stabsgefreiter Von der Ruhr" },
+    ];
+
     const img = document.getElementById("abzeichen");
     const nameDiv = document.getElementById("name");
+    const frageDiv = document.getElementById("frage");
+    const antwortDiv = document.getElementById("antwort");
 
-    function zeigeDienstgrad() {
+    function zeigeZufall() {
       nameDiv.style.display = "none";
+      frageDiv.style.display = "none";
+      antwortDiv.style.display = "none";
 
-      const index = Math.floor(Math.random() * dienstgrade.length);
-      const dienstgrad = dienstgrade[index];
+      const isFrage = Math.random() < 0.25; // 30% Wahrscheinlichkeit für Frage
 
-      img.src = dienstgrad.bild;
+      if (isFrage) {
+        img.style.display = "none";
+        const index = Math.floor(Math.random() * fragen.length);
+        const q = fragen[index];
+        frageDiv.textContent = q.frage;
+        frageDiv.style.display = "block";
+
+        setTimeout(() => {
+          antwortDiv.textContent = q.antwort;
+          antwortDiv.style.display = "block";
+        }, 3000);
+      } else {
+        img.style.display = "block";
+        const index = Math.floor(Math.random() * dienstgrade.length);
+        const dienstgrad = dienstgrade[index];
+        img.src = dienstgrad.bild;
+
+        setTimeout(() => {
+          nameDiv.textContent = dienstgrad.name;
+          nameDiv.style.display = "block";
+        }, 3000);
+      }
 
       setTimeout(() => {
-        nameDiv.textContent = dienstgrad.name;
-        nameDiv.style.display = "block";
-      }, 3000);
-
-      setTimeout(() => {
-        zeigeDienstgrad();
+        zeigeZufall();
       }, 5000);
     }
 
-    zeigeDienstgrad();
+    zeigeZufall();
   </script>
 </body>
 </html>
 
-<!-- 🔥 Speichere alle 46 Bilder im gleichen Ordner wie diese HTML-Datei und benenne sie entsprechend (dienstgrad1.png bis dienstgrad46.png). -->
+<!-- 🔥 Speichere weiterhin alle Bilder im Ordner und lade diesen geänderten Code auf Netlify oder GitHub Pages hoch. Fragen wechseln automatisch mit den Dienstgraden. -->
